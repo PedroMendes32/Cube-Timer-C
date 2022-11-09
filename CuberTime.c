@@ -3,13 +3,7 @@
 #include<time.h>
 #include<stdbool.h>
 #include<locale.h>
-
-void exibeMenu (void);
-void exibeAviso (void);
-void tempoExec (void);
-void cronometro (void);
-double conta (void);
-void salvar (void);
+#include"cube.h"
 
 int main(void)
 {
