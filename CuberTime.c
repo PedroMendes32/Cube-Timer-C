@@ -14,12 +14,12 @@ void salvar (void);
 int main(void)
 {
     setlocale(LC_ALL,"Portuguese");
-    exibeMenu();
     int escolha;
     bool status = true;
 
     while ( status )
-    {
+    {   
+        exibeMenu();
         printf("\n Digite a sua escolha: ");
         scanf("%d",&escolha);
         switch (escolha)
@@ -33,6 +33,7 @@ int main(void)
             default:
                 printf(" Opção inválida! \n");
         }
+        system("cls");
     }
 
     printf("\n\n\n");
@@ -100,7 +101,7 @@ void cronometro (void)
 
     resultados = (double*) malloc (sizeof(double) * qtdSeries);
 
-    for ( i = 1; i <= qtdSeries; i++ )
+    for ( i = 0; i < qtdSeries; i++ )
     {
         resultados[i] = conta();
     }
@@ -108,9 +109,9 @@ void cronometro (void)
     system("pause");
     printf(" TEMPOS OBTIDOS: \n");
 
-    for ( i = 1; i <= qtdSeries; i++ )
+    for ( i = 0; i < qtdSeries; i++ )
     {
-        printf(" %d - %.2lf Segundos \n",i,resultados[i]);
+        printf(" %d - %.2lf Segundos \n",i+1,resultados[i]);
     }
 }
 
