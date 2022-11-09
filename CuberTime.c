@@ -12,6 +12,30 @@ int main(void)
 {
     setlocale(LC_ALL,"Portuguese");
     exibeMenu();
+    int escolha;
+    bool status = true;
+
+    while ( status )
+    {
+        printf("\n Digite a sua escolha: ");
+        scanf("%d",&escolha);
+        switch (escolha)
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 0:
+                status = !status;
+                break;
+            default:
+                printf(" Opção inválida! \n");
+        }
+    }
 
     printf("\n\n\n");
     system("pause");
@@ -28,6 +52,7 @@ void exibeMenu (void)
     printf(" 2 -> 3x3 \n");
     printf(" 3 -> 4x4 \n");
     printf(" 4 -> 5x5 \n");
+    printf(" 0 -> Sair\n");
 }
 
 void exibeAviso (void) 
