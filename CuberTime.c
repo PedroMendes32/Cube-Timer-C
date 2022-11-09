@@ -19,6 +19,7 @@ int main(void)
 
     while ( status )
     {   
+        system("cls");
         exibeMenu();
         printf("\n Digite a sua escolha: ");
         scanf("%d",&escolha);
@@ -33,7 +34,6 @@ int main(void)
             default:
                 printf(" Opção inválida! \n");
         }
-        system("cls");
     }
 
     printf("\n\n\n");
@@ -48,6 +48,7 @@ void exibeMenu (void)
     printf("\t\t*   CUBE TIMER C     *\n");
     printf("\t\t**********************\n");
     printf(" 1 -> Iniciar cronômetro! \n");
+    printf(" 2 -> Ver resultados!\n");
     printf(" 0 -> Sair\n");
 }
 
@@ -92,7 +93,7 @@ double conta (void)
 void cronometro (void)
 {
     int qtdSeries;
-    int i;
+    int i,escolha;
 
     printf("\n Digite a quantidade de séries: ");
     scanf("%d",&qtdSeries);
@@ -106,12 +107,21 @@ void cronometro (void)
         resultados[i] = conta();
     }
 
-    system("pause");
-    printf(" TEMPOS OBTIDOS: \n");
+    printf("\n TEMPOS OBTIDOS: \n");
 
     for ( i = 0; i < qtdSeries; i++ )
     {
         printf(" %d - %.2lf Segundos \n",i+1,resultados[i]);
+    }
+
+    printf(" 1 -> Salvar dados \n");
+    printf(" 0 -> Sair \n");
+    printf("\n Digite a sua escolha: ");
+    scanf("%d",&escolha);
+
+    if ( escolha == 1 )
+    {
+        salvar();
     }
 }
 
