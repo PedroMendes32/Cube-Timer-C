@@ -23,6 +23,8 @@ int main(void)
             case 1:
                 cronometro();
                 break;
+            case 2:
+            	mostraDados();
             case 0:
                 status = !status;
                 break;
