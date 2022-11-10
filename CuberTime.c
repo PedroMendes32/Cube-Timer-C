@@ -25,6 +25,7 @@ int main(void)
                 break;
             case 2:
             	mostraDados();
+            	break;
             case 0:
                 status = !status;
                 break;

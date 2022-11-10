@@ -186,14 +186,15 @@ void mostraDados ( void )
 	double media = 0;
 	
 	system("cls");
-	printf("Exibir dados: \n");
-	printf("1 - Cubo 2x2\n");
-	printf("2 - Cubo 3x3\n");
-	printf("3 - Cubo 4x4\n");
-	printf("4 - Cubo 5x5\n");
-	printf("\nDigite a sua escolha: ");
+	printf(" Exibir dados: \n");
+	printf(" 1 - Cubo 2x2\n");
+	printf(" 2 - Cubo 3x3\n");
+	printf(" 3 - Cubo 4x4\n");
+	printf(" 4 - Cubo 5x5\n");
+	printf(" \nDigite a sua escolha: ");
 	scanf("%d",&escolha);
 	
+	system("cls");
 	switch (escolha)
 	{
 		case 1:
@@ -204,7 +205,6 @@ void mostraDados ( void )
 			}
 			else
 			{	
-				system("cls");
 				rewind(arquivo);
 				fread(&qtd,sizeof(int),1,arquivo);
 				valores = (double*) malloc ( sizeof(double) * qtd );
@@ -223,14 +223,101 @@ void mostraDados ( void )
 					printf(" %d Tentativa --> %.2lf Segundos! \n",i+1,valores[i]);
 				}
 				printf(" Média Cubo 2x2 --> %.2lf Segundos! \n",media/qtd);
-				
-				free(valores);
 			}
 			break;
 		
+		case 2:
+			if ( (arquivo = fopen("Cubo3x3.dat","rb")) == NULL)
+			{
+				printf("O arquivo não pode ser lido!\n");
+				exit(1);
+			}
+			else
+			{
+				rewind(arquivo);
+				fread(&qtd,sizeof(int),1,arquivo);
+				valores = (double*) malloc (sizeof(double) * qtd);
+				for ( i = 0; i < qtd; i++ )
+				{
+					fread(&valores[i],sizeof(double),1,arquivo);
+					media = media + valores[i];
+				}
+				
+				printf("**********************\n");
+				printf("*** DADOS CUBO 3X3 ***\n");
+				printf("**********************\n\n");
+				
+				for ( i = 0; i < qtd; i++ )
+				{
+					printf(" %d Tentativa --> %.2lf Segundos! \n",i+1,valores[i]);
+				}
+				printf(" Média Cubo 3x3 --> %.2lf Segundos! \n",media/qtd);
+			}
+			break;
+		
+		case 3:
+			if ( (arquivo = fopen("Cubo4x4.dat","rb")) == NULL)
+			{
+				printf("O arquivo não pode ser lido!\n");
+				exit(1);
+			}
+			else
+			{
+				rewind(arquivo);
+				fread(&qtd,sizeof(int),1,arquivo);
+				valores = (double*) malloc ( sizeof(double) * qtd );
+				for ( i = 0; i < qtd; i++ )
+				{
+					fread(&valores[i],sizeof(double),1,arquivo);
+					media = media + valores[i];
+				}
+				
+				printf("**********************\n");
+				printf("*** DADOS CUBO 4X4 ***\n");
+				printf("**********************\n\n");
+				
+				for ( i = 0; i < qtd; i++ )
+				{
+					printf(" %d Tentativa --> %.2lf Segundos! \n",i+1,valores[i]);
+				}
+				printf(" Média Cubo 4x4 --> %.2lf Segundos! \n",media/qtd);
+			}
+			break;
+		
+		case 4:
+			if ( (arquivo = fopen("Cubo5x5.dat","rb")) == NULL )
+			{
+				printf("O arquivo não pode ser lido!\n");
+				exit(1);
+			}
+			else
+			{
+				rewind(arquivo);
+				fread(&qtd,sizeof(int),1,arquivo);
+				valores = (double*) malloc ( sizeof(double) * qtd);
+				for ( i = 0; i < qtd; i++ )
+				{
+					fread(&valores[i],sizeof(double),1,arquivo);
+					media = media + valores[i];
+				}
+				
+				printf("**********************\n");
+				printf("*** DADOS CUBO 4X4 ***\n");
+				printf("**********************\n\n");
+				
+				for ( i = 0; i < qtd; i++ )
+				{
+					printf(" %d Tentativa --> %.2lf Segundos! \n",i+1,valores[i]);
+				}
+				printf(" Média Cubo 5x5 --> %.2lf Segundos! \n",media/qtd);
+			}
+			break;
 		default:
 			printf("Opção inválida!\n");
-			
 	}
+	
+	printf("\n\n\n");
+	system("pause");
+	free(valores);
 }
 
