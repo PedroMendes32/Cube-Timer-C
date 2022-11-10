@@ -77,12 +77,91 @@ void cronometro (void)
 
     if ( escolha == 1 )
     {
-        salvar();
+        salvar(resultados,qtdSeries);
     }
 }
 
-void salvar (void)
+void salvar (double * valores, int qtd)
 {
-    return;
+    FILE * arquivo;
+    int escolha, i;
+	
+	system("cls");
+    printf("- SALVAR EM: \n");
+    printf("1 - Cubo 2x2\n");
+    printf("2 - Cubo 3x3\n");
+    printf("3 - Cubo 4x4\n");
+    printf("4 - Cubo 5x5\n");
+    printf("5 - Sair\n");
+    printf("\n Digite a sua escolha: ");
+    scanf("%d",&escolha);
+
+    switch ( escolha )
+    {
+        case 1:
+            if ( (arquivo = fopen("Cubo2x2.dat","wb")) == NULL)
+            {
+                printf("O arquivo não pode ser aberto para escrita!\n");
+                exit(1);
+            }
+            else
+            {
+                for ( i = 0; i < qtd; i++ )
+                {
+                    fwrite(&valores[i],sizeof(double),1,arquivo);
+                }
+            }
+            break;
+        case 2:
+        	if ( (arquivo = fopen("Cubo3x3.dat","wb")) == NULL )
+			{
+				printf("O arquivo não pode ser aberto para escrita!\n");
+				exit(1);
+			}
+			else
+			{
+				for ( i = 0; i < qtd; i++ )
+				{
+					fwrite(&valores[i],sizeof(double),1,arquivo);
+				}
+			}
+			break;
+		case 3:
+			if ( (arquivo = fopen("Cubo4x4.dat","wb")) == NULL)
+			{
+				printf("O arquivo não pode ser aberto para escrita!\n");
+				exit(1);
+			}
+			else
+			{
+				for ( i = 0; i < qtd; i++ )
+				{
+					fwrite(&valores[i],sizeof(double),1,arquivo);
+				}
+			}
+			break;
+		case 4:
+			if ( (arquivo = fopen("Cubo5x5.dat","wb")) == NULL )
+			{
+				printf("O arquivo não pode ser aberto para escrita!\n");
+				exit(1);
+			}
+			else
+			{
+				for ( i = 0; i < qtd; i++ )
+				{
+					fwrite(&valores[i],sizeof(double),1,arquivo);
+				}
+			}
+			break;
+		case 5:
+			printf("Sair!\n\n");
+			system("pause");
+			break;
+			
+        default:
+            printf("Opção inválida!\n\n");
+            system("pause");
+    }
 }
 
