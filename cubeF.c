@@ -5,6 +5,7 @@ void exibeMenu (void)
     printf("\t\t**********************\n");
     printf(" 1 -> Iniciar cronômetro! \n");
     printf(" 2 -> Ver resultados!\n");
+    printf(" 3 -> Apagar registros!\n");
     printf(" 0 -> Sair\n");
 }
 
@@ -30,7 +31,7 @@ void tempoExec (void)
             break;
         }
     }
-    printf("\n\n\n");
+    printf("\n\n");
     printf("*************\n");
     printf("* TERMINOU! *\n");
     printf("*************\n\n\n");
@@ -57,7 +58,9 @@ void cronometro (void)
 {
     int qtdSeries;
     int i,escolha;
-
+	
+	system("cls");
+	
     printf("\n Digite a quantidade de séries: ");
     scanf("%d",&qtdSeries);
 	printf("\n\n");
@@ -98,12 +101,12 @@ void salvar (double * valores, int qtd)
     int escolha, i;
 	
 	system("cls");
-    printf("- SALVAR EM: \n");
-    printf("1 - Cubo 2x2\n");
-    printf("2 - Cubo 3x3\n");
-    printf("3 - Cubo 4x4\n");
-    printf("4 - Cubo 5x5\n");
-    printf("5 - Sair\n");
+    printf(" - SALVAR EM: \n");
+    printf(" 1 - Cubo 2x2\n");
+    printf(" 2 - Cubo 3x3\n");
+    printf(" 3 - Cubo 4x4\n");
+    printf(" 4 - Cubo 5x5\n");
+    printf(" 5 - Sair\n");
     printf("\n Digite a sua escolha: ");
     scanf("%d",&escolha);
 
@@ -373,6 +376,48 @@ void mostraSequencia ( char * sequencia )
 	printf(" SEQUÊNCIA DE EMBARALHAMENTO: \n");
 	printf(" %s ",sequencia);
 	printf("\n\n");
+}
+
+void apagaArquivo (void)
+{
+	int escolha;
+	
+	system("cls");
+	printf(" Excluir Arquivo: \n");
+	printf(" 1 -> Cubo2x2.dat \n");
+	printf(" 2 -> Cubo3x3.dat \n");
+	printf(" 3 -> Cubo4x4.dat \n");
+	printf(" 4 -> Cubo5x5.dat \n");
+	printf(" 0 -> Voltar \n");
+	printf("\nDigite a sua escolha: ");
+	scanf("%d",&escolha);
+	
+	printf("\n\n");
+	switch (escolha)
+	{
+		case 1:
+			remove("Cubo2x2.dat");
+			printf(" Arquivo Excluído com Sucesso! \n\n");
+			break;
+		case 2:
+			remove("Cubo3x3.dat");
+			printf(" Arquivo Excluído com Sucesso! \n\n");
+			break;
+		case 3:
+			remove("Cubo4x4.dat");
+			printf(" Arquivo Excluído com Sucesso! \n\n");
+			break;
+		case 4:
+			remove("Cubo5x5.dat");
+			printf(" Arquivo Excluído com Sucesso! \n\n");
+			break;
+		case 0:
+			break;
+		default:
+			printf(" Opção inválida! \n\n");
+
+	}
+	system("pause");
 }
 
 

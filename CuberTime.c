@@ -27,6 +27,9 @@ int main(void)
             case 2:
             	mostraDados();
             	break;
+            case 3:
+            	apagaArquivo();
+            	break;
             case 0:
                 status = !status;
                 break;

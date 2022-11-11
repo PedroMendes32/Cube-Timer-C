@@ -8,4 +8,5 @@ void salvar (double * valores, int qtd);
 void mostraDados (void);
 void escolheSequencia (void);
 void mostraSequencia ( char * sequencia );
+void apagaArquivo (void);
 
