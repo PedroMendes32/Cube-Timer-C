@@ -10,7 +10,9 @@ void exibeMenu (void)
 
 void exibeAviso (void) 
 {   
+	system("cls");
     fflush(stdin);
+	escolheSequencia();
     printf(" PARA COMEÇAR PRESSIONE ENTER! ");
     getchar();
     printf("\n\n");
@@ -18,6 +20,7 @@ void exibeAviso (void)
 
 void tempoExec (void)
 {   
+	system("cls");
     printf(" COMEÇOU A CONTAR!.. \n");
     printf(" PRESSIONE ENTER PARA FECHAR!..");
     while (true)
@@ -28,7 +31,11 @@ void tempoExec (void)
         }
     }
     printf("\n\n\n");
-    printf(" TERMINOU! \n");
+    printf("*************\n");
+    printf("* TERMINOU! *\n");
+    printf("*************\n\n\n");
+    system("pause");
+    
 }
 
 double conta (void)
@@ -53,7 +60,8 @@ void cronometro (void)
 
     printf("\n Digite a quantidade de séries: ");
     scanf("%d",&qtdSeries);
-
+	printf("\n\n");
+	
     double * resultados;
 
     resultados = (double*) malloc (sizeof(double) * qtdSeries);
@@ -62,7 +70,8 @@ void cronometro (void)
     {
         resultados[i] = conta();
     }
-
+    
+    system("cls");
     printf("\n TEMPOS OBTIDOS: \n");
 
     for ( i = 0; i < qtdSeries; i++ )
@@ -223,6 +232,8 @@ void mostraDados ( void )
 					printf(" %d Tentativa --> %.2lf Segundos! \n",i+1,valores[i]);
 				}
 				printf(" Média Cubo 2x2 --> %.2lf Segundos! \n",media/qtd);
+				
+				fclose(arquivo);
 			}
 			break;
 		
@@ -252,6 +263,8 @@ void mostraDados ( void )
 					printf(" %d Tentativa --> %.2lf Segundos! \n",i+1,valores[i]);
 				}
 				printf(" Média Cubo 3x3 --> %.2lf Segundos! \n",media/qtd);
+				
+				fclose(arquivo);
 			}
 			break;
 		
@@ -281,6 +294,8 @@ void mostraDados ( void )
 					printf(" %d Tentativa --> %.2lf Segundos! \n",i+1,valores[i]);
 				}
 				printf(" Média Cubo 4x4 --> %.2lf Segundos! \n",media/qtd);
+				
+				fclose(arquivo);
 			}
 			break;
 		
@@ -310,14 +325,55 @@ void mostraDados ( void )
 					printf(" %d Tentativa --> %.2lf Segundos! \n",i+1,valores[i]);
 				}
 				printf(" Média Cubo 5x5 --> %.2lf Segundos! \n",media/qtd);
+				
+				fclose(arquivo);
 			}
 			break;
 		default:
-			printf("Opção inválida!\n");
+			printf("Opção inválida! \n");
 	}
 	
 	printf("\n\n\n");
 	system("pause");
 	free(valores);
 }
+
+
+
+void escolheSequencia (void)
+{
+	FILE * arquivo;
+	char sequencia[100];
+	int qtd,posicao;
+	int i;
+	
+	if ( (arquivo = fopen("embaralha.txt","r")) == NULL)
+	{
+		printf("O arquivo não pode ser aberto! \n");
+		exit(1);
+	}
+	else
+	{	
+		fseek(arquivo,0,SEEK_SET);
+		fscanf(arquivo,"%d",&qtd);
+		posicao = (rand() % qtd)+1;
+		
+		for ( i = 0; i <= posicao; i++ )
+		{	
+			fgets(sequencia,100,arquivo);
+		}
+		
+		fclose(arquivo);
+		mostraSequencia(sequencia);
+	}
+}
+
+void mostraSequencia ( char * sequencia )
+{
+	printf(" SEQUÊNCIA DE EMBARALHAMENTO: \n");
+	printf(" %s ",sequencia);
+	printf("\n\n");
+}
+
+
 

@@ -3,6 +3,7 @@
 #include<time.h>
 #include<stdbool.h>
 #include<locale.h>
+#include<string.h>
 #include"cube.h"
 #include"cubeF.c"
 
@@ -31,6 +32,7 @@ int main(void)
                 break;
             default:
                 printf(" Opção Inválida! \n");
+                exit(1);
         }
     }
 
